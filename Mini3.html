@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diet Planner App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Diet Planner App</h2>
+
+    <input type="number" id="age" placeholder="Enter Age">
+    <input type="number" id="weight" placeholder="Enter Weight (kg)">
+    <input type="number" id="height" placeholder="Enter Height (cm)">
+
+    <button onclick="calculateDiet()">Calculate</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateDiet() {
+    let age = document.getElementById("age").value;
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value;
+
+    if(age === "" || weight === "" || height === "") {
+        document.getElementById("result").innerHTML =
+            "Please fill all fields.";
+        return;
+    }
+
+    let calories = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+
+    document.getElementById("result").innerHTML =
+        "Recommended Daily Calories: " +
+        Math.round(calories) + " kcal";
+}
+</script>
+
+</body>
+</html>
